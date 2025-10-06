@@ -1,0 +1,21 @@
+<section class="card">
+  <h1>Вход</h1>
+  <form action="/login" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Имя пользователя
+      <input name="username" required>
+    </label>
+    <label>Пароль
+      <input name="password" type="password">
+    </label>
+    <button type="submit">Войти</button>
+  </form>
+  <% if (flashError && flashError.length) { %>
+    <div class="flash error" style="margin-top:12px"><%= flashError[0] %></div>
+  <% } %>
+  <% if (flashInfo && flashInfo.length) { %>
+    <div class="flash info" style="margin-top:12px"><%= flashInfo[0] %></div>
+  <% } %>
+</section>
+
+

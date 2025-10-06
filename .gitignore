@@ -1,0 +1,24 @@
+﻿# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+.yarn/
+.pnp.*
+.env
+.env.*
+dist/
+build/
+coverage/
+.nyc_output/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.husky/
+.eslintcache
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/

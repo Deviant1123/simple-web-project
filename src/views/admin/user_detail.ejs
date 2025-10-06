@@ -1,0 +1,19 @@
+<section class="card">
+  <h1>Пользователь: <%= user.username %></h1>
+  <p>Статус: <%= user.is_locked ? 'Заблокирован' : 'Активен' %></p>
+  <p>Политика пароля: <%= user.enforce_policy ? 'Включена' : 'Отключена' %></p>
+  <div class="row">
+    <% if (prevId) { %>
+      <a href="/admin/users/<%= prevId %>">← Предыдущий</a>
+    <% } %>
+    <a href="/admin/users">К списку</a>
+    <% if (nextId) { %>
+      <a href="/admin/users/<%= nextId %>">Следующий →</a>
+    <% } %>
+  </div>
+  <% if (user.is_admin) { %>
+    <p><em>Нельзя блокировать или применять политику к ADMIN.</em></p>
+  <% } %>
+</section>
+
+

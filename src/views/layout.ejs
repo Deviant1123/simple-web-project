@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %> — ИнфБез</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <nav class="menu">
+      <% if (currentPath !== '/' && currentPath !== '/admin' && currentPath !== '/user') { %>
+        <a href="/">Главная</a>
+      <% } %>
+      <% if (currentUser) { %>
+        <form action="/logout" method="post" style="display:inline">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit">Выход</button>
+        </form>
+      <% } %>
+      <div class="right">
+        <details>
+          <summary>Справка</summary>
+          <div class="dropdown">
+            <a href="/about">О программе</a>
+          </div>
+        </details>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <% if (currentPath !== '/login') { %>
+      <% if (flashError && flashError.length) { %>
+        <div class="flash error"><%= flashError[0] %></div>
+      <% } %>
+      <% if (flashInfo && flashInfo.length) { %>
+        <div class="flash info"><%= flashInfo[0] %></div>
+      <% } %>
+    <% } %>
+    <%- body %>
+  </main>
+  <footer class="statusbar">ИнфБез Лаба • Пользователь: <%= currentUser ? currentUser.username : 'Гость' %></footer>
+</body>
+</html>
+
+

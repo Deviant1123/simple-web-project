@@ -1,0 +1,18 @@
+body { font-family: system-ui, Arial, sans-serif; margin: 0; background: #f5f6f8; }
+.menu { display: flex; gap: 12px; padding: 10px 16px; background: #202733; color: #fff; align-items: center; }
+.menu a, .menu button { color: #fff; text-decoration: none; background: transparent; border: none; cursor: pointer; padding: 6px 10px; }
+.menu .right { margin-left: auto; }
+main { padding: 24px; display: flex; justify-content: center; }
+.card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 720px; }
+label { display: block; margin: 12px 0; }
+input { padding: 8px 10px; width: 100%; box-sizing: border-box; }
+button { padding: 8px 12px; background: #2563eb; color: #fff; border-radius: 6px; border: 0; }
+.row { display: flex; gap: 12px; align-items: center; }
+table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+th, td { border-bottom: 1px solid #e5e7eb; padding: 8px; text-align: left; }
+.flash { padding: 10px 12px; border-radius: 6px; margin-bottom: 12px; bottom: 50px}
+.flash.error { background: #fee2e2; color: #991b1b; }
+.flash.info { background: #dbeafe; color: #1e40af;  }
+.statusbar { padding: 8px 12px; background: #111827; color: #9ca3af; position: fixed; left: 0; right: 0; bottom: 0; }
+
+

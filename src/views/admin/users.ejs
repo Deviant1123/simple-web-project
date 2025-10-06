@@ -1,0 +1,57 @@
+<section class="card">
+  <h1>Пользователи</h1>
+  <form action="/admin/users" method="post" class="row">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input name="username" placeholder="Новое имя пользователя" required>
+    <button type="submit">Добавить</button>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <th>Имя</th>
+        <th>Блокировка</th>
+        <th>Ограничения пароля</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(u => { %>
+        <tr>
+          <td><a href="/admin/users/<%= u.id %>"><%= u.username %></a></td>
+          <td><%= u.is_locked ? 'Заблокирован' : 'Активен' %></td>
+          <td><%= u.enforce_policy ? 'Включены' : 'Отключены' %></td>
+          <td>
+            <% if (!u.is_admin) { %>
+              <% if (u.is_locked) { %>
+                <form action="/admin/users/<%= u.id %>/unlock" method="post" style="display:inline">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button>Разблокировать</button>
+                </form>
+              <% } else { %>
+                <form action="/admin/users/<%= u.id %>/lock" method="post" style="display:inline">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button>Заблокировать</button>
+                </form>
+              <% } %>
+              <% if (u.enforce_policy) { %>
+                <form action="/admin/users/<%= u.id %>/policy/off" method="post" style="display:inline">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button>Отключить политику</button>
+                </form>
+              <% } else { %>
+                <form action="/admin/users/<%= u.id %>/policy/on" method="post" style="display:inline">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button>Включить политику</button>
+                </form>
+              <% } %>
+            <% } else { %>
+              <em>Действия недоступны для ADMIN</em>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
+
+
